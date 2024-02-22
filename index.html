@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тест на психические состояния</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            padding: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .question {
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .btn {
+            cursor: pointer;
+            padding: 10px 20px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            display: block;
+            margin: 20px auto;
+        }
+
+        #results {
+            margin-top: 20px;
+        }
+
+        #results h2 {
+            margin-top: 0;
+        }
+
+        #results p {
+            margin-bottom: 10px;
+        }
+
+        #results p:last-child {
+            margin-bottom: 0;
+        }
+
+        #results h3 {
+            margin-bottom: 5px;
+        }
+
+        #chart-container {
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .credit {
+            font-size: 10px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        img {
+            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+        .header {
+            background-color: #315c68bb;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+        .smiley {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    
+
+    <div class="header">
+        <h1>"Самооценка психических состояний" - тест Айзенка</h1>
+    </div>
+  <img src="8221e70b4f695d9ab94c15a1d0174436.jpg" alt="Описание изображения" style="display: block; margin: 0 auto; max-width: 100%;">
+    <div class="container">
+        <div class="question" id="question1">
+            <p>I. Не чувствую в себе уверенности.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer1" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer1" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer1" value="2"> Часто</label>
+            </div>
+        </div>
+
+        <!-- Остальные вопросы из части I -->
+        <!-- I -->
+        <div class="question" id="question2">
+            <p>2) Часто из-за пустяков краснею.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer2" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer2" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer2" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части I -->
+        <!-- I -->
+        <div class="question" id="question3">
+            <p>3) Мой сон беспокоен.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer3" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer3" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer3" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части I -->
+        <!-- I -->
+        <div class="question" id="question4">
+            <p>4) Легко впадаю в уныние.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer4" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer4" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer4" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части I -->
+        <!-- I -->
+        <div class="question" id="question5">
+            <p>5) Беспокоюсь о только воображаемых еще неприятностях.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer5" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer5" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer5" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части I -->
+        <!-- I -->
+        <div class="question" id="question6">
+            <p>6) Меня пугают трудности.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer6" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer6" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer6" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части I -->
+        <!-- I -->
+        <div class="question" id="question7">
+            <p>7) Люблю копаться в своих недостатках.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer7" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer7" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer7" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части I -->
+        <!-- I -->
+        <div class="question" id="question8">
+            <p>8) Меня легко убедить.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer8" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer8" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer8" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части I -->
+        <!-- I -->
+        <div class="question" id="question9">
+            <p>9) Я мнительный.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer9" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer9" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer9" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части I -->
+        <!-- I -->
+        <div class="question" id="question10">
+            <p>10) Я с трудом переношу время ожидания.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer10" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer10" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer10" value="2"> Часто</label>
+            </div>
+        </div>
+
+        <!-- Вопросы II -->
+        <!-- Продолжайте добавлять остальные вопросы из части II -->
+        <!-- II -->
+        <div class="question" id="question11">
+            <p>11) Нередко мне кажутся безвыходными положения, из которых в1е-таки можно найти выход.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer11" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer11" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer11" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части II -->
+        <!-- II -->
+        <div class="question" id="question12">
+            <p>12) Неприятности меня сильно расстраивают, я падаю духом.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer12" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer12" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer12" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части II -->
+        <!-- II -->
+        <div class="question" id="question13">
+            <p>13) При больших неприятностях я склонен без достаточных оснований винить себя.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer13" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer13" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer13" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части II -->
+        <!-- II -->
+        <div class="question" id="question14">
+            <p>14) Несчастья и неудачи ничему меня не учат.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer14" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer14" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer14" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части II -->
+        <!-- II -->
+        <div class="question" id="question15">
+            <p>15) Я часто отказываюсь от борьбы, считая ее бесплодной.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer15" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer15" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer15" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части II -->
+        <!-- II -->
+        <div class="question" id="question16">
+            <p>16) Я нередко чувствую себя беззащитным.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer16" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer16" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer16" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части II -->
+        <!-- II -->
+        <div class="question" id="question17">
+            <p>17) Иногда у меня бывает состояние отчаяния.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer17" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer17" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer17" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части II -->
+        <!-- II -->
+        <div class="question" id="question18">
+            <p>18) Я чувствую растерянность перед трудностями.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer18" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer18" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer18" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части II -->
+        <!-- II -->
+        <div class="question" id="question19">
+            <p>19) В трудные минуты жизни иногда веду себя по-детски, хочу, чтобы пожалели.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer19" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer19" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer19" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части II -->
+        <!-- II -->
+        <div class="question" id="question20">
+            <p>20) Считаю недостатки своего характера неисправимыми.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer20" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer20" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer20" value="2"> Часто</label>
+            </div>
+        </div>
+
+        <!-- Вопросы III -->
+        <!-- Продолжайте добавлять остальные вопросы из части III -->
+        <!-- III -->
+        <div class="question" id="question21">
+            <p>21) Оставляю за собой последнее слово.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer21" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer21" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer21" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части III -->
+        <!-- III -->
+        <div class="question" id="question22">
+            <p>22) Нередко в разговоре перебиваю собеседника.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer22" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer22" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer22" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части III -->
+        <!-- III -->
+        <div class="question" id="question23">
+            <p>23) Меня легко рассердить.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer23" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer23" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer23" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части III -->
+        <!-- III -->
+        <div class="question" id="question24">
+            <p>24) Люблю делать замечания другим.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer24" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer24" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer24" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части III -->
+        <!-- III -->
+        <div class="question" id="question25">
+            <p>25) Хочу быть авторитетом для других.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer25" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer25" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer25" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части III -->
+        <!-- III -->
+        <div class="question" id="question26">
+            <p>26) Не довольствуюсь малым, хочу наибольшего.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer26" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer26" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer26" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части III -->
+        <!-- III -->
+        <div class="question" id="question27">
+            <p>27) Когда разгневаюсь, плохо себя сдерживаю.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer27" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer27" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer27" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части III -->
+        <!-- III -->
+        <div class="question" id="question28">
+            <p>28) Предпочитаю лучше руководить, чем подчиняться.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer28" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer28" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer28" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части III -->
+        <!-- III -->
+        <div class="question" id="question29">
+            <p>29) У меня резкая, грубоватая жестикуляция.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer29" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer29" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer29" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части III -->
+        <!-- III -->
+        <div class="question" id="question30">
+            <p>30) Я мстителен.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer30" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer30" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer30" value="2"> Часто</label>
+            </div>
+        </div>
+
+        <!-- Вопросы IV -->
+        <!-- Продолжайте добавлять остальные вопросы из части IV -->
+        <!-- IV -->
+        <div class="question" id="question31">
+            <p>31) Мне трудно менять привычки.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer31" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer31" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer31" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части IV -->
+        <!-- IV -->
+        <div class="question" id="question32">
+            <p>32) Нелегко переключать внимание.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer32" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer32" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer32" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части IV -->
+        <!-- IV -->
+        <div class="question" id="question33">
+            <p>33) Очень настороженно отношусь ко всему новому.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer33" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer33" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer33" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части IV -->
+        <!-- IV -->
+        <div class="question" id="question34">
+            <p>34) Меня трудно переубедить.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer34" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer34" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer34" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части IV -->
+        <!-- IV -->
+        <div class="question" id="question35">
+            <p>35) Нередко у меня не выходит из головы мысль, от которой следовало бы освободиться.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer35" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer35" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer35" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части IV -->
+        <!-- IV -->
+        <div class="question" id="question36">
+            <p>36) Нелегко сближаюсь с людьми.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer36" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer36" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer36" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части IV -->
+        <!-- IV -->
+        <div class="question" id="question37">
+            <p>37) Меня расстраивают даже незначительные нарушения плана.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer37" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer37" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer37" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части IV -->
+        <!-- IV -->
+        <div class="question" id="question38">
+            <p>38) Я подвержен вспыльчивости.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer38" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer38" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer38" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части IV -->
+        <!-- IV -->
+        <div class="question" id="question39">
+            <p>39) Меня легко ввести в заблуждение.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer39" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer39" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer39" value="2"> Часто</label>
+            </div>
+        </div>
+        <!-- Продолжайте добавлять остальные вопросы из части IV -->
+        <!-- IV -->
+        <div class="question" id="question40">
+            <p>40) Меня легко смущает комплимент.</p>
+            <div class="options">
+                <label class="option"><input type="radio" name="answer40" value="0"> Совсем не подходит</label>
+                <label class="option"><input type="radio" name="answer40" value="1"> Изредка</label>
+                <label class="option"><input type="radio" name="answer40" value="2"> Часто</label>
+            </div>
+        </div>
+
+        <!-- Кнопка для отправки результатов -->
+        <button class="btn" onclick="showResults()">Узнать результат</button>
+
+        <!-- Для отображения результатов -->
+        <div id="results"></div>
+
+
+    </div>
+
+    <script>
+         function showResults() {
+          
+            // Получаем все ответы
+            var answers = [];
+            for (var i = 1; i <= 40; i++) {
+                var radios = document.getElementsByName('answer' + i);
+                for (var j = 0; j < radios.length; j++) {
+                    if (radios[j].checked) {
+                        answers.push(parseInt(radios[j].value));
+                        break;
+                    }
+                }
+            }
+
+            // Подсчитываем сумму баллов за каждую группу вопросов
+            var anxietyScore = answers.slice(0, 10).reduce((a, b) => a + b, 0);
+            var frustrationScore = answers.slice(10, 20).reduce((a, b) => a + b, 0);
+            var aggressionScore = answers.slice(20, 30).reduce((a, b) => a + b, 0);
+            var rigidityScore = answers.slice(30, 40).reduce((a, b) => a + b, 0);
+
+            // Оцениваем и интерпретируем результаты
+            var results = '';
+            results += '<h2>Обработка результатов</h2>';
+            results += '<h3>Тревожность:</h3>';
+            results += '<p>Сумма баллов: ' + anxietyScore + '</p>';
+            results += '<p>Интерпретация: ';
+            if (anxietyScore <= 7) {
+                results += 'не тревожны';
+            } else if (anxietyScore <= 14) {
+                results += 'тревожность средняя, допустимого уровня';
+            } else {
+                results += 'очень тревожный';
+            }
+            results += '</p>';
+
+            results += '<h3>Фрустрация:</h3>';
+            results += '<p>Сумма баллов: ' + frustrationScore + '</p>';
+            results += '<p>Интерпретация: ';
+            if (frustrationScore <= 7) {
+                results += 'не имеете высокой самооценки, устойчивы к неудачам, не боитесь трудностей';
+            } else if (frustrationScore <= 14) {
+                results += 'средний уровень, фрустрация имеет место';
+            } else {
+                results += 'у вас низкая самооценка, вы избегаете трудностей, боитесь неудач, фрустрированы';
+            }
+            results += '</p>';
+
+            results += '<h3>Агрессивность:</h3>';
+            results += '<p>Сумма баллов: ' + aggressionScore + '</p>';
+            results += '<p>Интерпретация: ';
+            if (aggressionScore <= 7) {
+                results += 'вы спокойны, выдержаны';
+            } else if (aggressionScore <= 14) {
+                results += 'средний уровень агрессивности';
+            } else {
+                results += 'вы агрессивны, не выдержаны, есть трудности при общении и работе с людьми';
+            }
+            results += '</p>';
+
+            results += '<h3>Ригидность:</h3>';
+            results += '<p>Сумма баллов: ' + rigidityScore + '</p>';
+            results += '<p>Интерпретация: ';
+            if (rigidityScore <= 7) {
+                results += 'регидности нет, легкая переключаемость';
+            } else if (rigidityScore <= 14) {
+                results += 'средний уровень';
+            } else {
+                results += 'сильно выраженная ригидность, неизменность поведения, убеждений, взглядов, даже если они расходятся, не соответствуют реальной обстановке, жизни. Вам противопоказаны смена работы, изменения в семье.';
+            }
+            results += '</p>';
+            
+
+
+            // Выводим результаты
+            document.getElementById('results').innerHTML = results;
+            document.getElementById('results').innerHTML += '<div class="credit">Разработал: Unholy</div>';
+            
+        }
+    </script>
+
+</body>
+
+</html>
